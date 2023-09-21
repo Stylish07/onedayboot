@@ -25,6 +25,13 @@ public class Book {
     @CreationTimestamp
     private LocalDateTime insertDateTime;
 
+    /**
+     * JpaRepository가 Reflection을 사용하므로 기본생성자가 필요.<br>
+     * 빈 객체 생성을 막기위해 private으로 설정.(Reflection 사용과 무관함)
+     */
+    private Book() {
+    }
+
     public Book(String title, Integer price) {
         this.title = title;
         this.price = price;
@@ -34,32 +41,16 @@ public class Book {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     public LocalDateTime getInsertDateTime() {
         return insertDateTime;
-    }
-
-    public void setInsertDateTime(LocalDateTime insertDateTime) {
-        this.insertDateTime = insertDateTime;
     }
 
 }
